@@ -1,7 +1,9 @@
 import React from "react";
 import CrudTableRow from "./CrudTableRow";
-
-const CrudTable = ({ data }) => {
+//ACA FALTABA LA PROPIEDAD PROPS QUE HACE QUE TOME LAS PROPIEDADES QUE LE PASASTE DEL PADRE
+// <CrudTable data={db} /> 
+const CrudTable = (props) => {
+  console.log(props)
   return (
     <div>
       <h3>tabla de datos </h3>
@@ -14,12 +16,12 @@ const CrudTable = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.length === 0 ? (
+          {props.data.length === 0 ? (
             <tr>
               <td colSpan="3"> Sin datos</td>
             </tr>
           ) : (
-            data.map((el) => <CrudTableRow key={el.id} el={el} />)
+            props.data.map((el) => <CrudTableRow key={el.id} el={el} />)
           )}
         </tbody>
       </table>
